@@ -4,27 +4,40 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "newspaper_details")
+@Table(name = "verified_register_rni_2")
 @Data
 public class NewspaperDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    private String regNo;
+    @Column(name = "press_name")
+    private String pressName;
 
-    private String newspaperName;
+    @Column(name = "old_registration_no_news")
+    private String oldRegistrationNoNews;
 
-    private String placeOfPublication;
+    @Column(name = "registration_no_news")
+    private String registrationNoNews;
 
-    private String state;
+    @Column(name = "newspaper_title")
+    private String newspaperTitle;
 
-    private String district;
+    @Column(name = "language_nw")
+    private String languageNw;
 
-    private String pincode;
-
-    private String language;
-
+    @Column(name = "periodicity")
     private String periodicity;
+
+    @Column(name = "ppb_address")
+    private String ppbAddress;
+
+    @Column(name = "ppb_state")
+    private String ppbState;
+
+    @Column(name = "ppb_district")
+    private String ppbDistrict;
+
+    @Column(name = "ppb_pincode")
+    private String ppbPincode;
 }

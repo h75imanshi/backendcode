@@ -9,7 +9,6 @@ import lombok.Data;
 public class KeeperDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "press_id")
@@ -18,20 +17,21 @@ public class KeeperDetails {
     @Column(name = "keeper_name")
     private String keeperName;
 
-    @Column(name = "mobile")
-    private String mobile;
+    @Column(name = "keeper_mobile_no")
+    private String keeperMobileNo;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "keeper_email")
+    private String keeperEmail;
 
-    @Column(name = "address")
+    @Column(name = "keeper_address")
     private String address;
 
-    @Column(name = "state")
-    private String state;
+    @Column(name = "keeper_state_id")
+    private Integer keeperStateId;
 
-    @Column(name = "district")
-    private String district;
+    @Column(name = "keeper_district_id")
+    private Integer keeperDistrictId;
 
-
+    @Column(name = "keeper_pincode")
+    private String keeperPincode;
 }

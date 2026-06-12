@@ -18,30 +18,28 @@ public class PressSearchResultDto {
     private String state;
     private String district;
     private String status;
-
-}
-
-@Data
-class KeeperDto {
-    private String id;
+    private  String pressAddress;
+    private String pressPincode;
     private String keeperName;
-    private String mobile;
-    private String email;
-    private String state;
-    private String district;
-    private String address;
+    private String keeperMobileNo;
+    private String keeperEmail;
+    private String keeperAddress;
+    private String keeperState;
+    private String keeperDistrict;
+    private String keeperPincode;
+
 
 }
 
 @Data
 class MachineDto {
     private String id;
-    private String machineName;
     private String machineType;
     private String model;
     private String serialNo;
     private Integer mfgYear;
     private String capacity;
-    private Integer quantity;
+    private Integer powerRating;
     private String condition;
+
 }

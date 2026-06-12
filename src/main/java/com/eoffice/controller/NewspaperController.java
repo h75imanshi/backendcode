@@ -1,29 +1,31 @@
 package com.eoffice.controller;
 
-import com.eoffice.model.NewspaperDetails;
+
+import com.eoffice.dto.NewspaperDto;
+
 import com.eoffice.service.NewspaperService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/newspaper")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class NewspaperController {
 
-    private final NewspaperService service;
+    private final NewspaperService newspaperService;
 
-    @PostMapping("/add")
-    public NewspaperDetails save(
-            @RequestBody NewspaperDetails details) {
+    @GetMapping("/press-name/{pressName}")
+    public ResponseEntity<?> getByPressName(
+            @PathVariable String pressName) {
 
-        return service.save(details);
-    }
+        return ResponseEntity.ok(
+                newspaperService.getByPressName(pressName));
 
-    @GetMapping("/{regNo}")
-    public NewspaperDetails get(
-            @PathVariable String regNo) {
-
-        return service.getByRegNo(regNo);
     }
 }

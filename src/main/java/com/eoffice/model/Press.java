@@ -59,6 +59,9 @@ public class Press {
     @Column(name = "keeper_email")
     private String keeperEmail;
 
+    @Column(name = "keeper_address")
+    private String keeperAddress;
+
     @Column(name = "keeper_state_id")
     private Integer keeperStateId;
 

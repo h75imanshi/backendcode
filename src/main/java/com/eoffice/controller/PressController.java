@@ -41,7 +41,9 @@ public class PressController {
             for (PressSearchResultDto p : result) {
 
                 System.out.println(
-                        p.getPressName()
+                        "PRESS = " + p.getPressName()
+                                + " | STATE = " + p.getState()
+                                + " | DISTRICT = " + p.getDistrict()
                 );
             }
 

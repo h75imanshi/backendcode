@@ -32,15 +32,24 @@ public interface StateRepository extends JpaRepository<StateMaster, Long> {
         """, nativeQuery = true)
     String getStateName(@Param("stateCode") Integer stateCode);
 
+//    @Query(value = """
+//        SELECT District_Name
+//        FROM state
+//        WHERE State_Code = :stateCode
+//        AND District_Code = :districtCode
+//        LIMIT 1
+//        """, nativeQuery = true)
+//    String getDistrictName(
+//            @Param("stateCode") Integer stateCode,
+//            @Param("districtCode") Integer districtCode
+
     @Query(value = """
-        SELECT District_Name
-        FROM state
-        WHERE State_Code = :stateCode
-        AND District_Code = :districtCode
-        LIMIT 1
-        """, nativeQuery = true)
+    SELECT District_Name
+    FROM state
+    WHERE District_Code = :districtCode
+    LIMIT 1
+    """, nativeQuery = true)
     String getDistrictName(
-            @Param("stateCode") Integer stateCode,
             @Param("districtCode") Integer districtCode
     );
 }

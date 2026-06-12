@@ -55,11 +55,13 @@ SELECT
     p.press_type AS pressType,
     s.State_Name AS state,
     s.District_Name AS district,
+     p.press_address AS pressAddress,
+         p.press_pincode AS pressPincode,
+            
     p.application_status AS status
 FROM printer_press_details p
 LEFT JOIN state s
-       ON s.State_Code = p.press_state_id
-      AND s.District_Code = p.press_district_id
+      ON s.District_Code = p.press_district_id
 WHERE p.press_id = :id
 """, nativeQuery = true)
     PressDetailDto getPressDetail(@Param("id") String id);

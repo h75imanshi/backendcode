@@ -49,6 +49,8 @@ public class PressService {
         dto.setRegNo(p.getRegNo());
         dto.setPressName(p.getPressName());
         dto.setPressType(p.getPressType());
+        dto.setPressAddress(p.getPressAddress());
+        dto.setPressPincode(p.getPressPincode());
         System.out.println("PRESS = " + p.getPressName());
             System.out.println("STATE ID = " + p.getPressStateId());
             System.out.println("DISTRICT ID = " + p.getPressDistrictId());
@@ -57,9 +59,10 @@ public class PressService {
                     stateRepository.getStateName(p.getPressStateId());
 
             String districtName =
-                    stateRepository.getDistrictName(
-                            p.getPressStateId(),
-                            p.getPressDistrictId()
+                  (
+                            stateRepository.getDistrictName(
+                                    p.getPressDistrictId()
+                            )
                     );
 
             System.out.println("STATE NAME = " + stateName);
@@ -67,6 +70,23 @@ public class PressService {
 
             dto.setState(stateName);
             dto.setDistrict(districtName);
+            dto.setKeeperName(p.getKeeperName());
+        dto.setKeeperMobileNo(p.getKeeperMobileNo());
+        dto.setKeeperEmail(p.getKeeperEmail());
+        dto.setKeeperAddress(p.getKeeperAddress());
+        dto.setKeeperPincode(p.getKeeperPincode());
+
+        dto.setKeeperState(
+                stateRepository.getStateName(
+                        p.getKeeperStateId()
+                )
+        );
+
+        dto.setKeeperDistrict(
+                stateRepository.getDistrictName(
+                        p.getKeeperDistrictId()
+                )
+        );
 
             return dto;
         }
@@ -103,25 +123,54 @@ public class PressService {
         dto.setStatus(p.getApplicationStatus());
         dto.setRegNo(p.getRegNo());
         dto.setPressType(p.getPressType());
+        dto.setPressAddress(p.getPressAddress());
+        dto.setPressPincode(p.getPressPincode());
         System.out.println("PRESS = " + p.getPressName());
         System.out.println("STATE ID = " + p.getPressStateId());
         System.out.println("DISTRICT ID = " + p.getPressDistrictId());
 
-        String stateName =
-                stateRepository.getStateName(p.getPressStateId());
+        dto.setState(
+                stateRepository.getStateName(
+                        p.getPressStateId()
+                )
+        );
 
-        String districtName =
+        dto.setDistrict(
                 stateRepository.getDistrictName(
-                        p.getPressStateId(),
                         p.getPressDistrictId()
-                );
+                )
+        );
+        dto.setKeeperName(
+                p.getKeeperName()
+        );
 
-        System.out.println("STATE NAME = " + stateName);
-        System.out.println("DISTRICT NAME = " + districtName);
+        dto.setKeeperMobileNo(
+                p.getKeeperMobileNo()
+        );
 
-        dto.setState(stateName);
-        dto.setDistrict(districtName);
+        dto.setKeeperEmail(
+                p.getKeeperEmail()
+        );
 
+        dto.setKeeperAddress(
+                p.getKeeperAddress()
+        );
+
+        dto.setKeeperPincode(
+                p.getKeeperPincode()
+        );
+
+        dto.setKeeperState(
+                stateRepository.getStateName(
+                        p.getKeeperStateId()
+                )
+        );
+
+        dto.setKeeperDistrict(
+                stateRepository.getDistrictName(
+                        p.getKeeperDistrictId()
+                )
+        );
 
 
 

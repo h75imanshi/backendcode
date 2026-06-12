@@ -28,6 +28,16 @@ public class PressDetailDto {
     private String pressDistrict;
     private String state;
     private String district;
+    private String pressAddress;
+    private String pressPincode;
+    private String keeperName;
+    private String keeperMobileNo;
+    private String keeperEmail;
+    private String keeperState;
+    private String keeperDistrict;
+    private String keeperPincode;
+    private String keeperAddress;
+
 
 
 }

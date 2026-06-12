@@ -15,9 +15,6 @@ public class MachineDetails {
     @Column(name = "press_id")
     private String pressId;
 
-    @Column(name = "machine_name")
-    private String machineName;
-
     @Column(name = "machine_type")
     private String machineType;
 
@@ -33,7 +30,7 @@ public class MachineDetails {
     @Column(name = "capacity")
     private String capacity;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Column(name = "power_rating")
+    private Integer powerRating;
 
 }
