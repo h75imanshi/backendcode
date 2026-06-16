@@ -124,41 +124,43 @@ public class MandatoryFilingService {
     // ── SEARCH — DIARY NUMBER ─────────────────────────────
     public List<FilingDTO.Response> searchByDiaryNumber(String v) {
         return repo.findByDiaryNumberContainingIgnoreCase(v)
-                .stream().map(this::toResponse).collect(Collectors.toList());
-    }
-
-    // ── SEARCH — REG NO ───────────────────────────────────
-    public List<FilingDTO.Response> searchByRegNo(String v) {
-        return repo.findByRegNoContainingIgnoreCase(v)
-                .stream().map(this::toResponse).collect(Collectors.toList());
-    }
-
-    // ── SEARCH — TITLE ────────────────────────────────────
-    public List<FilingDTO.Response> searchByTitleName(String v) {
-        return repo.findByTitleNameContainingIgnoreCase(v)
-                .stream().map(this::toResponse).collect(Collectors.toList());
-    }
-
-    // ── SEARCH — UNIVERSAL ────────────────────────────────
-    public List<FilingDTO.Response> universalSearch(String keyword) {
-        return repo
-                .universalSearch(keyword)
                 .stream()
                 .map(this::toResponse)
                 .collect(Collectors.toList());
     }
 
-    // ── SEARCH — ADVANCED ────────────────────────────────
-    public List<FilingDTO.Response> advancedSearch(FilingDTO.SearchRequest r) {
-        return repo.advancedSearch(
-                blank(r.getDiaryNumber()), blank(r.getRegNo()),
-                blank(r.getTitleName()),   blank(r.getFileNo()),
-                blank(r.getSectionName()), blank(r.getState()),
-                blank(r.getDistrict()),    blank(r.getOwnerName()),
-                blank(r.getPublisherName()), blank(r.getPeriodicity()),
-                blank(r.getStatus())
-        ).stream().map(this::toResponse).collect(Collectors.toList());
+    public List<FilingDTO.Response> searchByRegNo(String v) {
+        return repo.findByRegNoContainingIgnoreCase(v)
+                .stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
     }
+
+    public List<FilingDTO.Response> searchByTitleName(String v) {
+        return repo.findByTitleNameContainingIgnoreCase(v)
+                .stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
+    }
+    // ── SEARCH — UNIVERSAL ────────────────────────────────
+//    public List<FilingDTO.Response> universalSearch(String keyword) {
+//        return repo  .universalSearch(keyword)
+//              .stream()
+//               .map(this::toResponse)
+//             .collect(Collectors.toList());
+//   }
+//
+//    // ── SEARCH — ADVANCED ────────────────────────────────
+//    public List<FilingDTO.Response> advancedSearch(FilingDTO.SearchRequest r) {
+//        return repo.advancedSearch(
+//                blank(r.getDiaryNumber()), blank(r.getRegNo()),
+//                blank(r.getTitleName()),   blank(r.getFileNo()),
+//                blank(r.getSectionName()), blank(r.getState()),
+//                blank(r.getDistrict()),    blank(r.getOwnerName()),
+//                blank(r.getPublisherName()), blank(r.getPeriodicity()),
+//                blank(r.getStatus())
+//        ).stream().map(this::toResponse).collect(Collectors.toList());
+//    }
 
     // ── CREATE ────────────────────────────────────────────
     public FilingDTO.Response create(FilingDTO.Request req) {
@@ -399,5 +401,27 @@ public class MandatoryFilingService {
         return n.endsWith(".pdf") || n.endsWith(".jpg")
                 || n.endsWith(".jpeg") || n.endsWith(".png")
                 || n.endsWith(".tiff") || n.endsWith(".tif");
+    }
+
+    public List<FilingDTO.Response> universalSearch(String keyword) {
+
+        List<FilingDTO.Response> results =
+                searchByDiaryNumber(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = searchByRegNo(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        return searchByTitleName(keyword);
+    }
+
+    public List<FilingDTO.Response> advancedSearch(FilingDTO.SearchRequest req) {
+        return null;
     }
 }

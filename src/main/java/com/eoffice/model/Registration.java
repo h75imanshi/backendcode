@@ -4,101 +4,147 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "verified_register_rni_2")
+@Table(name = "title_registration")
 @Data
 public class Registration {
 
     @Id
-    @Column(name = "register_no")
-    private String registerNo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "newspaper_title")
-    private String newspaperTitle;
+    @Column(name = "diary_number")
+    private String diaryNumber;
 
-    @Column(name = "old_registration_no_news")
-    private String oldRegistrationNoNews;
+    @Column(name = "reg_no")
+    private String regNo;
 
-    @Column(name = "registration_no_news")
-    private String registrationNoNews;
+    @Column(name = "title_name")
+    private String titleName;
 
-    @Column(name = "state_name")
-    private String stateName;
-
-    @Column(name = "language_nw")
-    private String languageNw;
+    @Column(name = "language")
+    private String language;
 
     @Column(name = "periodicity")
     private String periodicity;
 
+    @Column(name = "status")
+    private String status;
+
+    // Owner
+
+    @Column(name = "owner_name")
+    private String ownerName;
+
+    @Column(name = "owner_email")
+    private String ownerEmail;
+
+    @Column(name = "owner_contact_no")
+    private String ownerContactNo;
+
+    @Column(name = "owner_category")
+    private String ownerCategory;
+
+    @Column(name = "owner_address")
+    private String ownerAddress;
+
+    @Column(name = "owner_state")
+    private Integer ownerState;
+
+    @Column(name = "owner_district")
+    private Integer ownerDistrict;
+
+    @Column(name = "owner_pincode")
+    private String ownerPincode;
+
     // Publisher
-    @Column(name = "pb_name")
+
+    @Column(name = "publisher_name")
     private String publisherName;
 
-    @Column(name = "pb_nationality")
-    private String publisherNationality;
+    @Column(name = "publisher_email")
+    private String publisherEmail;
 
-    @Column(name = "pb_address")
+    @Column(name = "publisher_contact_no")
+    private String publisherContactNo;
+
+    @Column(name = "publisher_address")
     private String publisherAddress;
 
-    // Printer
-    @Column(name = "pr_name")
-    private String printerName;
+    @Column(name = "publisher_state")
+    private Integer publisherState;
 
-    @Column(name = "pr_nationality")
-    private String printerNationality;
+    @Column(name = "publisher_district")
+    private Integer publisherDistrict;
 
-    @Column(name = "pr_address")
-    private String printerAddress;
+    @Column(name = "publisher_pincode")
+    private String publisherPincode;
 
     // Editor
-    @Column(name = "ed_name")
+
+    @Column(name = "editor_name")
     private String editorName;
 
-    @Column(name = "ed_nationality")
-    private String editorNationality;
+    @Column(name = "editor_email")
+    private String editorEmail;
 
-    @Column(name = "ed_address")
+    @Column(name = "editor_contact_no")
+    private String editorContactNo;
+
+    @Column(name = "editor_address")
     private String editorAddress;
 
+    @Column(name = "editor_state")
+    private Integer editorState;
+
+    @Column(name = "editor_district")
+    private Integer editorDistrict;
+
+    @Column(name = "editor_pincode")
+    private String editorPincode;
+
     // Press
+
+    @Column(name = "press_id")
+    private String pressId;
+
     @Column(name = "press_name")
     private String pressName;
 
     @Column(name = "press_address")
     private String pressAddress;
 
-    @Column(name = "press_district")
-    private String pressDistrict;
+    @Column(name = "press_state_id")
+    private Integer pressStateId;
 
-    @Column(name = "press_state")
-    private String pressState;
+    @Column(name = "press_district_id")
+    private Integer pressDistrictId;
 
     @Column(name = "press_pincode")
     private String pressPincode;
 
-    // Place of Publication
-    @Column(name = "ppb_address")
-    private String placeAddress;
+    @Column(name = "approved_date")
+    private String approvedDate;
 
-    @Column(name = "ppb_district")
-    private String placeDistrict;
+    // Keeper
 
-    @Column(name = "ppb_state")
-    private String placeState;
+    @Column(name = "keeper_name")
+    private String keeperName;
 
-    @Column(name = "ppb_pincode")
-    private String placePincode;
+    @Column(name = "keeper_email")
+    private String keeperEmail;
 
-    // Owner
-    @Column(name = "owner_name")
-    private String ownerName;
+    @Column(name = "keeper_mobile_no")
+    private String keeperMobileNo;
 
-    @Column(name = "owner_address")
-    private String ownerAddress;
+    @Column(name = "keeper_address")
+    private String keeperAddress;
 
-    @Column(name = "owner_state")
-    private String ownerState;
+    @Column(name = "keeper_state_id")
+    private Integer keeperStateId;
 
-    @Column(name = "ownership")
-    private String ownership;
+    @Column(name = "keeper_district_id")
+    private Integer keeperDistrictId;
+
+    @Column(name = "keeper_pincode")
+    private String keeperPincode;
 }

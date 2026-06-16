@@ -1,8 +1,8 @@
 package com.eoffice.controller;
 
+import com.eoffice.dto.RegistrationProjection;
 import com.eoffice.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +16,9 @@ public class RegistrationController {
     private final RegistrationService service;
 
     @GetMapping("/search")
-    public ResponseEntity<List<Object[]>> search(
+    public List<RegistrationProjection> search(
             @RequestParam String value) {
 
-        return ResponseEntity.ok(
-                service.search(value));
-
+        return service.search(value);
     }
 }
