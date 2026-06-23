@@ -28,4 +28,11 @@ public class NewspaperController {
                 newspaperService.getByPressName(pressName));
 
     }
+//@GetMapping("/application")
+//public ResponseEntity<?> getByApplicationNo(
+//        @RequestParam String appNo) {
+//
+//    return ResponseEntity.ok(
+//            newspaperService.getByApplicationNo(appNo));
+//}
 }

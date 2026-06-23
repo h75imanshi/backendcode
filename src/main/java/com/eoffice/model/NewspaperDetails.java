@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "verified_register_rni_2")
+@Table(name = "title_registration")
 @Data
 public class NewspaperDetails {
 
@@ -19,6 +19,8 @@ public class NewspaperDetails {
 
     @Column(name = "registration_no_news")
     private String registrationNoNews;
+    @Column(name = "registration_no")
+    private String registrationNo;
 
     @Column(name = "newspaper_title")
     private String newspaperTitle;

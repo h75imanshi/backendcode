@@ -19,6 +19,13 @@ public class MachineController {
     public List<MachineDetails> getMachineByPressId(
             @PathVariable String pressId) {
 
-        return machineRepository.findByPressId(pressId);
+        System.out.println("PRESS ID = " + pressId);
+
+        List<MachineDetails> data =
+                machineRepository.findByPressId(pressId);
+
+        System.out.println("DATA = " + data.size());
+
+        return data;
     }
 }
