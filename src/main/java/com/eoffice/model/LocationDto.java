@@ -1,5 +1,6 @@
 package com.eoffice.model;
 
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LocationDto {
 
+    @Lob
     private Double lat;
     private Double lon;
 }

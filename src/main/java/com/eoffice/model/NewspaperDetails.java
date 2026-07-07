@@ -9,6 +9,7 @@ import lombok.Data;
 public class NewspaperDetails {
 
     @Id
+    @Lob
     private Integer id;
 
     @Column(name = "press_name")

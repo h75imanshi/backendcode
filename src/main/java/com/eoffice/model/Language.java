@@ -9,6 +9,7 @@ import lombok.Data;
 public class Language {
 
     @Id
+    @Lob
     private Integer id;
 
     @Column(name = "language_code")

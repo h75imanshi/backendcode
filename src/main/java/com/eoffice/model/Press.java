@@ -14,6 +14,7 @@ import java.util.List;
 public class Press {
 
     @Id
+    @Lob
     @Column(name = "press_id")
     private String id;
 
@@ -85,6 +86,7 @@ public class Press {
 
     @Column(name = "license_validity")
     private LocalDate licenseValidity;
+
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

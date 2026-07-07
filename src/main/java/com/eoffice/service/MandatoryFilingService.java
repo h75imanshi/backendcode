@@ -1,6 +1,6 @@
 package com.eoffice.service;
 
-import com.eoffice.model.FilingDTO;
+import com.eoffice.dto.FilingDTO;
 import com.eoffice.model.MandatoryFiling;
 import com.eoffice.repository.MandatoryFilingRepository;
 import com.eoffice.repository.StateRepository;
@@ -40,6 +40,7 @@ public class MandatoryFilingService {
                 .regNo(e.getRegNo())
                 .fileNo(e.getFileNo())
                 .sectionName(e.getSectionName())
+                .subject(e.getSubject())
                 .state(e.getState())
                 .district(e.getDistrict())
                 .language(e.getLanguage())
@@ -98,6 +99,10 @@ public class MandatoryFilingService {
                 .pressDistrict(e.getPressDistrict())
                 .pressCity(e.getPressCity())
                 .pressPincode(e.getPressPincode())
+
+                .courtName(e.getCourtName())
+                .caseNo(e.getCaseNo())
+                .caseDescription(e.getCaseDescription())
 
                 // REVISION
 //                .revisionTitleName(e.getRevisionTitleName())
@@ -171,6 +176,7 @@ public class MandatoryFilingService {
                 .regNo(req.getRegNo())
                 .fileNo(req.getFileNo())
                 .sectionName(req.getSectionName())
+                .subject(req.getSubject())
                 .state(req.getState() != null ? req.getState() : "")
                 .district(req.getDistrict())
                 .language(req.getLanguage())
@@ -182,6 +188,47 @@ public class MandatoryFilingService {
                 .status(req.getStatus() != null
                         ? MandatoryFiling.Status.valueOf(req.getStatus())
                         : MandatoryFiling.Status.PENDING)
+                .courtName(req.getCourtName())
+                .caseNo(req.getCaseNo())
+                .caseDescription(req.getCaseDescription())
+                // OWNER
+                .ownerAddress(req.getOwnerAddress())
+                .ownerState(req.getOwnerState())
+                .ownerDistrict(req.getOwnerDistrict())
+                .ownerCity(req.getOwnerCity())
+                .ownerPincode(req.getOwnerPincode())
+
+                // PUBLISHER
+                .publisherAddress(req.getPublisherAddress())
+                .publisherState(req.getPublisherState())
+                .publisherDistrict(req.getPublisherDistrict())
+                .publisherCity(req.getPublisherCity())
+                .publisherPincode(req.getPublisherPincode())
+
+                // EDITOR
+                .editorName(req.getEditorName())
+                .editorAddress(req.getEditorAddress())
+                .editorState(req.getEditorState())
+                .editorDistrict(req.getEditorDistrict())
+                .editorCity(req.getEditorCity())
+                .editorPincode(req.getEditorPincode())
+
+                // PUBLICATION
+                .publicationAddress(req.getPublicationAddress())
+                .publicationState(req.getPublicationState())
+                .publicationDistrict(req.getPublicationDistrict())
+                .publicationCity(req.getPublicationCity())
+                .publicationPincode(req.getPublicationPincode())
+
+                // PRINTING PRESS
+                .printerName(req.getPrinterName())
+                .pressName(req.getPressName())
+                .pressAddress(req.getPressAddress())
+                .pressState(req.getPressState())
+                .pressDistrict(req.getPressDistrict())
+                .pressCity(req.getPressCity())
+                .pressPincode(req.getPressPincode())
+
 
 //                // DAK SECTION
 //                .dakReceivedDate(req.getDakReceivedDate())
@@ -212,17 +259,54 @@ public class MandatoryFilingService {
         e.setRegNo(req.getRegNo());
         e.setFileNo(req.getFileNo());
         e.setSectionName(req.getSectionName());
+        e.setSubject(req.getSubject());
         e.setState(req.getState());
         e.setDistrict(req.getDistrict());
         e.setLanguage(req.getLanguage());
         e.setPinCode(req.getPinCode());
         e.setOwnerName(req.getOwnerName());
         e.setPublisherName(req.getPublisherName());
+        e.setOwnerAddress(req.getOwnerAddress());
+        e.setOwnerState(req.getOwnerState());
+        e.setOwnerDistrict(req.getOwnerDistrict());
+        e.setOwnerCity(req.getOwnerCity());
+        e.setOwnerPincode(req.getOwnerPincode());
+
+        e.setPublisherAddress(req.getPublisherAddress());
+        e.setPublisherState(req.getPublisherState());
+        e.setPublisherDistrict(req.getPublisherDistrict());
+        e.setPublisherCity(req.getPublisherCity());
+        e.setPublisherPincode(req.getPublisherPincode());
+
+        e.setEditorName(req.getEditorName());
+        e.setEditorAddress(req.getEditorAddress());
+        e.setEditorState(req.getEditorState());
+        e.setEditorDistrict(req.getEditorDistrict());
+        e.setEditorCity(req.getEditorCity());
+        e.setEditorPincode(req.getEditorPincode());
+
+        e.setPublicationAddress(req.getPublicationAddress());
+        e.setPublicationState(req.getPublicationState());
+        e.setPublicationDistrict(req.getPublicationDistrict());
+        e.setPublicationCity(req.getPublicationCity());
+        e.setPublicationPincode(req.getPublicationPincode());
+
+        e.setPrinterName(req.getPrinterName());
+        e.setPressName(req.getPressName());
+        e.setPressAddress(req.getPressAddress());
+        e.setPressState(req.getPressState());
+        e.setPressDistrict(req.getPressDistrict());
+        e.setPressCity(req.getPressCity());
+        e.setPressPincode(req.getPressPincode());
+
+        e.setCourtName(req.getCourtName());
+        e.setCaseNo(req.getCaseNo());
+        e.setCaseDescription(req.getCaseDescription());
         e.setPeriodicity(parsePeriodicity(req.getPeriodicity()));
-        if (req.getStatus() != null) {
-            try {
-                e.setStatus(MandatoryFiling.Status.valueOf(req.getStatus()));
-            } catch (IllegalArgumentException ignored) {}
+            if (req.getStatus() != null) {
+                try {
+                    e.setStatus(MandatoryFiling.Status.valueOf(req.getStatus()));
+                } catch (IllegalArgumentException ignored) {}
         }
         return toResponse(repo.save(e));
     }
@@ -269,6 +353,37 @@ public class MandatoryFilingService {
         repo.save(e);
         return toResponse(e);
     }
+
+    // court case //
+    public FilingDTO.Response uploadCaseDocument(Long id,
+                                                 MultipartFile file,
+                                                 String uploadDir) throws IOException {
+
+        MandatoryFiling e = getOrThrow(id);
+
+        Path dir = Paths.get(uploadDir);
+
+        if (!Files.exists(dir)) {
+            Files.createDirectories(dir);
+        }
+
+        String clean = StringUtils.cleanPath(file.getOriginalFilename());
+
+        String stored = id + "_court_" + clean;
+
+        Path dest = dir.resolve(stored);
+
+        Files.copy(file.getInputStream(),
+                dest,
+                StandardCopyOption.REPLACE_EXISTING);
+
+        e.setCaseDocument(dest.toAbsolutePath().toString());
+
+        repo.save(e);
+
+        return toResponse(e);
+    }
+
 
     // ── PDF SERVE ─────────────────────────────────────────
     public Resource loadDocument(Long id, int slot) throws IOException {

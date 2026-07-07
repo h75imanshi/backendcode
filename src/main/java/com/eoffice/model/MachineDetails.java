@@ -9,6 +9,7 @@ import lombok.Data;
 public class MachineDetails {
 
     @Id
+    @Lob
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 

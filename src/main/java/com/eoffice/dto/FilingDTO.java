@@ -1,6 +1,8 @@
-package com.eoffice.model;
+package com.eoffice.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class FilingDTO {
         private String regNo;
         private String fileNo;
         private String sectionName;
+        private String subject;
         private String state;
         private String district;
         private String ownerName;
@@ -27,6 +30,7 @@ public class FilingDTO {
         private LocalDateTime createdDate;
         private LocalDateTime modifiedDate;
         private String pinCode;
+
 
         // OWNER
         private String ownerAddress;
@@ -66,6 +70,7 @@ public class FilingDTO {
         private String pressCity;
         private String pressPincode;
 
+
 //        // DAK SECTION
 //        private String dakReceivedDate;
 //        private String dakDiaryNo;
@@ -81,6 +86,18 @@ public class FilingDTO {
 //        private String revisionReason;
 //        private String revisionChanges;
 //        private String revisionDate;
+
+
+        //court details//
+        private String courtName;
+
+        private String caseNo;
+
+        private String caseDescription;
+
+        private MultipartFile caseDocument;
+
+
     }
 
 
@@ -93,6 +110,7 @@ public class FilingDTO {
         private String regNo;
         private String fileNo;
         private String sectionName;
+        private String subject;
         private String state;
         private String district;
         private String ownerName;
@@ -171,6 +189,15 @@ public class FilingDTO {
 //        private String revisionReason;
 //        private String revisionChanges;
 //        private String revisionDate;
+
+        //court details//
+        private String courtName;
+
+        private String caseNo;
+
+        private String caseDescription;
+
+        private MultipartFile caseDocument;
     }
 
 
@@ -181,7 +208,6 @@ public class FilingDTO {
         private String regNo;
         private String titleName;
         private String fileNo;
-        private String sectionName;
         private String state;
         private String district;
         private String ownerName;

@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
+    @Lob
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

@@ -9,6 +9,7 @@ import lombok.Data;
 public class Periodicity {
 
     @Id
+    @Lob
     @Column(name = "Periodicity_id")
     private Integer periodicityId;
 

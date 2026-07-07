@@ -9,6 +9,7 @@ import lombok.Data;
 public class KeeperDetails {
 
     @Id
+    @Lob
     private String id;
 
     @Column(name = "press_id")

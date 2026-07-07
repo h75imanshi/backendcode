@@ -11,6 +11,7 @@ import lombok.Setter;
 public class StateMaster {
 
     @Id
+    @Lob
     @Column(name = "S.No.")
     private Integer sno;
 

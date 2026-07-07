@@ -25,16 +25,17 @@ import java.util.List;
 public class MandatoryFiling {
 
     @Id
+    @Lob
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // ── Core Search Fields ────────────────────────────────
     @NotBlank(message = "Diary number is mandatory")
-    @Column(name = "diary_number", nullable = false, unique = true, length = 50)
+    @Column(name = "diary_number", unique = true, length = 50)
     private String diaryNumber;
 
     @NotBlank(message = "Title name is mandatory")
-    @Column(name = "title_name", nullable = false, length = 255)
+    @Column(name = "title_name", length = 255)
     private String titleName;
 
     @Column(name = "reg_no",       length = 50)
@@ -241,6 +242,21 @@ public class MandatoryFiling {
 
     @Column(name = "pdf10")
     private String pdf10;
+
+    @Column(name = "court_name")
+    private String courtName;
+
+    @Column(name = "case_no")
+    private String caseNo;
+
+    @Column(name = "case_description", columnDefinition = "TEXT")
+    private String caseDescription;
+
+    @Column(name = "case_document")
+    private String caseDocument;
+
+    @Column(name = "subject")
+    private String subject;
 
 //    // ── DAK Section ───────────────────────────────────────
 //    @Column(name = "dak_received_date", length = 50)

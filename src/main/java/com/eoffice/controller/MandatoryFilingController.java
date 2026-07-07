@@ -1,7 +1,6 @@
 package com.eoffice.controller;
 
-import com.eoffice.model.FilingDTO;
-import com.eoffice.service.RegistrationService;
+import com.eoffice.dto.FilingDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -167,6 +166,10 @@ public class MandatoryFilingController {
 
             @RequestParam String periodicity,
 
+            @RequestParam String sectionName,
+            @RequestParam String subject,
+//            @RequestParam String filingDate,
+
             @RequestParam String language,
 
             @RequestParam String state,
@@ -186,6 +189,15 @@ public class MandatoryFilingController {
             @RequestParam(required = false)
             String publisherName,
 
+            @RequestParam(required = false) String courtName,
+
+            @RequestParam(required = false) String caseNo,
+
+            @RequestParam(required = false) String caseDescription,
+
+            @RequestParam(value = "caseDocument", required = false)
+            MultipartFile caseDocument,
+
 
             @RequestParam(
                     value = "document1",
@@ -197,6 +209,7 @@ public class MandatoryFilingController {
                     value = "document2",
                     required = false
             )
+
             MultipartFile document2,
             @RequestParam(
                     value = "otherDocuments",
@@ -236,6 +249,12 @@ public class MandatoryFilingController {
                             .ownerName(ownerName)
                     .publisherName(publisherName)
                     .createdBy(createdBy)
+                            .courtName(courtName)
+                            .caseNo(caseNo)
+                            .caseDescription(caseDescription)
+//                            .fileNo(filingDate)
+                            .sectionName(sectionName)
+                            .subject(subject)
 
 
 
@@ -275,7 +294,8 @@ public class MandatoryFilingController {
             // =====================================================
 
             if (document2 != null &&
-                    !document2.isEmpty()) {
+                    !document2.isEmpty())
+            {
 
                 service.uploadDocument(
 
@@ -287,6 +307,15 @@ public class MandatoryFilingController {
 
                         2
 
+                );
+
+            }
+            if (caseDocument != null && !caseDocument.isEmpty()) {
+
+                service.uploadCaseDocument(
+                        saved.getId(),
+                        caseDocument,
+                        uploadDir
                 );
 
             }

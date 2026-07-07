@@ -9,6 +9,7 @@ import lombok.Data;
 public class Registration {
 
     @Id
+    @Lob
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
