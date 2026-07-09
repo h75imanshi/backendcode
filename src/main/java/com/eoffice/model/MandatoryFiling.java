@@ -126,92 +126,92 @@ public class MandatoryFiling {
 //        return;
 //    }
 
-
-    @Column(name = "owner_address")
-    private String ownerAddress;
-
-    @Column(name = "owner_state")
-    private String ownerState;
-
-    @Column(name = "owner_district")
-    private String ownerDistrict;
-
-    @Column(name = "owner_city")
-    private String ownerCity;
-
-    @Column(name = "owner_pincode")
-    private String ownerPincode;
-
-
-
-    @Column(name = "publisher_address")
-    private String publisherAddress;
-
-    @Column(name = "publisher_state")
-    private String publisherState;
-
-    @Column(name = "publisher_district")
-    private String publisherDistrict;
-
-    @Column(name = "publisher_city")
-    private String publisherCity;
-
-    @Column(name = "publisher_pincode")
-    private String publisherPincode;
-
-    @Column(name = "editor_name")
-    private String editorName;
-
-    @Column(name = "editor_address")
-    private String editorAddress;
-
-    @Column(name = "editor_state")
-    private String editorState;
-
-    @Column(name = "editor_district")
-    private String editorDistrict;
-
-    @Column(name = "editor_city")
-    private String editorCity;
-
-    @Column(name = "editor_pincode")
-    private String editorPincode;
-
-    @Column(name = "publication_address")
-    private String publicationAddress;
-
-    @Column(name = "publication_state")
-    private String publicationState;
-
-    @Column(name = "publication_district")
-    private String publicationDistrict;
-
-    @Column(name = "publication_city")
-    private String publicationCity;
-
-    @Column(name = "publication_pincode")
-    private String publicationPincode;
-
-    @Column(name = "printer_name")
-    private String printerName;
-
-    @Column(name = "press_name")
-    private String pressName;
-
-    @Column(name = "press_address")
-    private String pressAddress;
-
-    @Column(name = "press_state")
-    private String pressState;
-
-    @Column(name = "press_district")
-    private String pressDistrict;
-
-    @Column(name = "press_city")
-    private String pressCity;
-
-    @Column(name = "press_pincode")
-    private String pressPincode;
+//
+//    @Column(name = "owner_address")
+//    private String ownerAddress;
+//
+//    @Column(name = "owner_state")
+//    private String ownerState;
+//
+//    @Column(name = "owner_district")
+//    private String ownerDistrict;
+//
+//    @Column(name = "owner_city")
+//    private String ownerCity;
+//
+//    @Column(name = "owner_pincode")
+//    private String ownerPincode;
+//
+//
+//
+//    @Column(name = "publisher_address")
+//    private String publisherAddress;
+//
+//    @Column(name = "publisher_state")
+//    private String publisherState;
+//
+//    @Column(name = "publisher_district")
+//    private String publisherDistrict;
+//
+//    @Column(name = "publisher_city")
+//    private String publisherCity;
+//
+//    @Column(name = "publisher_pincode")
+//    private String publisherPincode;
+//
+//    @Column(name = "editor_name")
+//    private String editorName;
+//
+//    @Column(name = "editor_address")
+//    private String editorAddress;
+//
+//    @Column(name = "editor_state")
+//    private String editorState;
+//
+//    @Column(name = "editor_district")
+//    private String editorDistrict;
+//
+//    @Column(name = "editor_city")
+//    private String editorCity;
+//
+//    @Column(name = "editor_pincode")
+//    private String editorPincode;
+//
+//    @Column(name = "publication_address")
+//    private String publicationAddress;
+//
+//    @Column(name = "publication_state")
+//    private String publicationState;
+//
+//    @Column(name = "publication_district")
+//    private String publicationDistrict;
+//
+//    @Column(name = "publication_city")
+//    private String publicationCity;
+//
+//    @Column(name = "publication_pincode")
+//    private String publicationPincode;
+//
+//    @Column(name = "printer_name")
+//    private String printerName;
+//
+//    @Column(name = "press_name")
+//    private String pressName;
+//
+//    @Column(name = "press_address")
+//    private String pressAddress;
+//
+//    @Column(name = "press_state")
+//    private String pressState;
+//
+//    @Column(name = "press_district")
+//    private String pressDistrict;
+//
+//    @Column(name = "press_city")
+//    private String pressCity;
+//
+//    @Column(name = "press_pincode")
+//    private String pressPincode;
 
     @Column(name = "pdf1")
     private String pdf1;
@@ -257,6 +257,13 @@ public class MandatoryFiling {
 
     @Column(name = "subject")
     private String subject;
+
+
+
+    @Column(name = "specify_details")
+    private String specifyDetails;
+    @Column(name = "other_type")
+    private String otherType;
 
 //    // ── DAK Section ───────────────────────────────────────
 //    @Column(name = "dak_received_date", length = 50)

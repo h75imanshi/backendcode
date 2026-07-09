@@ -17,7 +17,10 @@ public interface MandatoryFilingRepository
     List<MandatoryFiling> findByRegNoContainingIgnoreCase(String regNo);
 
     List<MandatoryFiling> findByTitleNameContainingIgnoreCase(String titleName);
+    List<MandatoryFiling> findBySpecifyDetailsContainingIgnoreCase(String specifyDetails);
 
+    List<MandatoryFiling> findByOtherTypeContainingIgnoreCase(String otherType);
+    List<MandatoryFiling> findByFileNoContainingIgnoreCase(String fileNo);
     @Query(value = """
         SELECT
             d.diary_number AS diaryNumber,

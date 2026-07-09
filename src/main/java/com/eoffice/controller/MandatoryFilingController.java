@@ -134,6 +134,24 @@ public class MandatoryFilingController {
         );
 
     }
+    //other//
+    @GetMapping("/search/specify")
+    public ResponseEntity<?> bySpecify(
+            @RequestParam String specifyDetails) {
+
+        return ResponseEntity.ok(
+                service.searchBySpecifyDetails(specifyDetails)
+        );
+    }
+
+    @GetMapping("/search/other")
+    public ResponseEntity<?> byOther(
+            @RequestParam String otherType) {
+
+        return ResponseEntity.ok(
+                service.searchByOtherType(otherType)
+        );
+    }
 
 
     // ── CREATE ────────────────────────────────────────────
@@ -195,8 +213,13 @@ public class MandatoryFilingController {
 
             @RequestParam(required = false) String caseDescription,
 
+            @RequestParam(required = false) String specifyDetails,
+            @RequestParam(required = false) String otherType,
+
+
             @RequestParam(value = "caseDocument", required = false)
             MultipartFile caseDocument,
+
 
 
             @RequestParam(
@@ -252,9 +275,12 @@ public class MandatoryFilingController {
                             .courtName(courtName)
                             .caseNo(caseNo)
                             .caseDescription(caseDescription)
+                            .otherType(otherType)
+                            .specifyDetails(specifyDetails)
 //                            .fileNo(filingDate)
                             .sectionName(sectionName)
                             .subject(subject)
+
 
 
 

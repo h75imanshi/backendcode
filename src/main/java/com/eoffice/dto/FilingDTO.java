@@ -97,6 +97,9 @@ public class FilingDTO {
 
         private MultipartFile caseDocument;
 
+        private String specifyDetails;
+        private String otherType;
+
 
     }
 
@@ -136,43 +139,43 @@ public class FilingDTO {
         private List<String> documents;
         private List<String> pinCode;
 
-        // OWNER
-        private String ownerAddress;
-        private String ownerState;
-        private String ownerDistrict;
-        private String ownerCity;
-        private String ownerPincode;
-
-        // PUBLISHER
-        private String publisherAddress;
-        private String publisherState;
-        private String publisherDistrict;
-        private String publisherCity;
-        private String publisherPincode;
-
-        // EDITOR
-        private String editorName;
-        private String editorAddress;
-        private String editorState;
-        private String editorDistrict;
-        private String editorCity;
-        private String editorPincode;
-
-        // PUBLICATION
-        private String publicationAddress;
-        private String publicationState;
-        private String publicationDistrict;
-        private String publicationCity;
-        private String publicationPincode;
-
-        // PRINTING PRESS
-        private String printerName;
-        private String pressName;
-        private String pressAddress;
-        private String pressState;
-        private String pressDistrict;
-        private String pressCity;
-        private String pressPincode;
+//        // OWNER
+//        private String ownerAddress;
+//        private String ownerState;
+//        private String ownerDistrict;
+//        private String ownerCity;
+//        private String ownerPincode;
+//
+//        // PUBLISHER
+//        private String publisherAddress;
+//        private String publisherState;
+//        private String publisherDistrict;
+//        private String publisherCity;
+//        private String publisherPincode;
+//
+//        // EDITOR
+//        private String editorName;
+//        private String editorAddress;
+//        private String editorState;
+//        private String editorDistrict;
+//        private String editorCity;
+//        private String editorPincode;
+//
+//        // PUBLICATION
+//        private String publicationAddress;
+//        private String publicationState;
+//        private String publicationDistrict;
+//        private String publicationCity;
+//        private String publicationPincode;
+//
+//        // PRINTING PRESS
+//        private String printerName;
+//        private String pressName;
+//        private String pressAddress;
+//        private String pressState;
+//        private String pressDistrict;
+//        private String pressCity;
+//        private String pressPincode;
 
 //        // DAK SECTION
 //        private String dakReceivedDate;
@@ -198,6 +201,9 @@ public class FilingDTO {
         private String caseDescription;
 
         private MultipartFile caseDocument;
+
+        private String specifyDetails;
+        private String otherType;
     }
 
 

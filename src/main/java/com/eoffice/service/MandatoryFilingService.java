@@ -62,47 +62,52 @@ public class MandatoryFilingService {
                 .createdAt(e.getCreatedAt())
                 .updatedAt(e.getUpdatedAt())
 
+
                 // OWNER
-                .ownerAddress(e.getOwnerAddress())
-                .ownerState(e.getOwnerState())
-                .ownerDistrict(e.getOwnerDistrict())
-                .ownerCity(e.getOwnerCity())
-                .ownerPincode(e.getOwnerPincode())
-
-                // PUBLISHER
-                .publisherAddress(e.getPublisherAddress())
-                .publisherState(e.getPublisherState())
-                .publisherDistrict(e.getPublisherDistrict())
-                .publisherCity(e.getPublisherCity())
-                .publisherPincode(e.getPublisherPincode())
-
-                // EDITOR
-                .editorName(e.getEditorName())
-                .editorAddress(e.getEditorAddress())
-                .editorState(e.getEditorState())
-                .editorDistrict(e.getEditorDistrict())
-                .editorCity(e.getEditorCity())
-                .editorPincode(e.getEditorPincode())
-
-                // PUBLICATION
-                .publicationAddress(e.getPublicationAddress())
-                .publicationState(e.getPublicationState())
-                .publicationDistrict(e.getPublicationDistrict())
-                .publicationCity(e.getPublicationCity())
-                .publicationPincode(e.getPublicationPincode())
-
-                // PRINTING PRESS
-                .printerName(e.getPrinterName())
-                .pressName(e.getPressName())
-                .pressAddress(e.getPressAddress())
-                .pressState(e.getPressState())
-                .pressDistrict(e.getPressDistrict())
-                .pressCity(e.getPressCity())
-                .pressPincode(e.getPressPincode())
+//                .ownerAddress(e.getOwnerAddress())
+//                .ownerState(e.getOwnerState())
+//                .ownerDistrict(e.getOwnerDistrict())
+//                .ownerCity(e.getOwnerCity())
+//                .ownerPincode(e.getOwnerPincode())
+//
+//                // PUBLISHER
+//                .publisherAddress(e.getPublisherAddress())
+//                .publisherState(e.getPublisherState())
+//                .publisherDistrict(e.getPublisherDistrict())
+//                .publisherCity(e.getPublisherCity())
+//                .publisherPincode(e.getPublisherPincode())
+//
+//                // EDITOR
+//                .editorName(e.getEditorName())
+//                .editorAddress(e.getEditorAddress())
+//                .editorState(e.getEditorState())
+//                .editorDistrict(e.getEditorDistrict())
+//                .editorCity(e.getEditorCity())
+//                .editorPincode(e.getEditorPincode())
+//
+//                // PUBLICATION
+//                .publicationAddress(e.getPublicationAddress())
+//                .publicationState(e.getPublicationState())
+//                .publicationDistrict(e.getPublicationDistrict())
+//                .publicationCity(e.getPublicationCity())
+//                .publicationPincode(e.getPublicationPincode())
+//
+//                // PRINTING PRESS
+//                .printerName(e.getPrinterName())
+//                .pressName(e.getPressName())
+//                .pressAddress(e.getPressAddress())
+//                .pressState(e.getPressState())
+//                .pressDistrict(e.getPressDistrict())
+//                .pressCity(e.getPressCity())
+//                .pressPincode(e.getPressPincode())
 
                 .courtName(e.getCourtName())
                 .caseNo(e.getCaseNo())
                 .caseDescription(e.getCaseDescription())
+                .specifyDetails(e.getSpecifyDetails())
+                .otherType(e.getOtherType())
+
+
 
                 // REVISION
 //                .revisionTitleName(e.getRevisionTitleName())
@@ -147,6 +152,19 @@ public class MandatoryFilingService {
                 .map(this::toResponse)
                 .collect(Collectors.toList());
     }
+    public List<FilingDTO.Response> searchBySpecifyDetails(String v) {
+        return repo.findBySpecifyDetailsContainingIgnoreCase(v)
+                .stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<FilingDTO.Response> searchByOtherType(String v) {
+        return repo.findByOtherTypeContainingIgnoreCase(v)
+                .stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
+    }
     // ── SEARCH — UNIVERSAL ────────────────────────────────
 //    public List<FilingDTO.Response> universalSearch(String keyword) {
 //        return repo  .universalSearch(keyword)
@@ -154,6 +172,42 @@ public class MandatoryFilingService {
 //               .map(this::toResponse)
 //             .collect(Collectors.toList());
 //   }
+    public List<FilingDTO.Response> universalSearch(String keyword) {
+
+        List<FilingDTO.Response> results =
+                searchByDiaryNumber(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = searchByRegNo(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = searchByTitleName(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = searchBySpecifyDetails(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = searchByOtherType(keyword);
+
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        return List.of();
+    }
+
 //
 //    // ── SEARCH — ADVANCED ────────────────────────────────
 //    public List<FilingDTO.Response> advancedSearch(FilingDTO.SearchRequest r) {
@@ -191,43 +245,47 @@ public class MandatoryFilingService {
                 .courtName(req.getCourtName())
                 .caseNo(req.getCaseNo())
                 .caseDescription(req.getCaseDescription())
+                .specifyDetails(req.getSpecifyDetails())
+                .otherType(req.getOtherType())
+
+
                 // OWNER
-                .ownerAddress(req.getOwnerAddress())
-                .ownerState(req.getOwnerState())
-                .ownerDistrict(req.getOwnerDistrict())
-                .ownerCity(req.getOwnerCity())
-                .ownerPincode(req.getOwnerPincode())
-
-                // PUBLISHER
-                .publisherAddress(req.getPublisherAddress())
-                .publisherState(req.getPublisherState())
-                .publisherDistrict(req.getPublisherDistrict())
-                .publisherCity(req.getPublisherCity())
-                .publisherPincode(req.getPublisherPincode())
-
-                // EDITOR
-                .editorName(req.getEditorName())
-                .editorAddress(req.getEditorAddress())
-                .editorState(req.getEditorState())
-                .editorDistrict(req.getEditorDistrict())
-                .editorCity(req.getEditorCity())
-                .editorPincode(req.getEditorPincode())
-
-                // PUBLICATION
-                .publicationAddress(req.getPublicationAddress())
-                .publicationState(req.getPublicationState())
-                .publicationDistrict(req.getPublicationDistrict())
-                .publicationCity(req.getPublicationCity())
-                .publicationPincode(req.getPublicationPincode())
-
-                // PRINTING PRESS
-                .printerName(req.getPrinterName())
-                .pressName(req.getPressName())
-                .pressAddress(req.getPressAddress())
-                .pressState(req.getPressState())
-                .pressDistrict(req.getPressDistrict())
-                .pressCity(req.getPressCity())
-                .pressPincode(req.getPressPincode())
+////                .ownerAddress(req.getOwnerAddress())
+//                .ownerState(req.getOwnerState())
+//                .ownerDistrict(req.getOwnerDistrict())
+//                .ownerCity(req.getOwnerCity())
+//                .ownerPincode(req.getOwnerPincode())
+//
+//                // PUBLISHER
+//                .publisherAddress(req.getPublisherAddress())
+//                .publisherState(req.getPublisherState())
+//                .publisherDistrict(req.getPublisherDistrict())
+//                .publisherCity(req.getPublisherCity())
+//                .publisherPincode(req.getPublisherPincode())
+//
+//                // EDITOR
+//                .editorName(req.getEditorName())
+//                .editorAddress(req.getEditorAddress())
+//                .editorState(req.getEditorState())
+//                .editorDistrict(req.getEditorDistrict())
+//                .editorCity(req.getEditorCity())
+//                .editorPincode(req.getEditorPincode())
+//
+//                // PUBLICATION
+//                .publicationAddress(req.getPublicationAddress())
+//                .publicationState(req.getPublicationState())
+//                .publicationDistrict(req.getPublicationDistrict())
+//                .publicationCity(req.getPublicationCity())
+//                .publicationPincode(req.getPublicationPincode())
+//
+//                // PRINTING PRESS
+//                .printerName(req.getPrinterName())
+//                .pressName(req.getPressName())
+//                .pressAddress(req.getPressAddress())
+//                .pressState(req.getPressState())
+//                .pressDistrict(req.getPressDistrict())
+//                .pressCity(req.getPressCity())
+//                .pressPincode(req.getPressPincode())
 
 
 //                // DAK SECTION
@@ -266,42 +324,45 @@ public class MandatoryFilingService {
         e.setPinCode(req.getPinCode());
         e.setOwnerName(req.getOwnerName());
         e.setPublisherName(req.getPublisherName());
-        e.setOwnerAddress(req.getOwnerAddress());
-        e.setOwnerState(req.getOwnerState());
-        e.setOwnerDistrict(req.getOwnerDistrict());
-        e.setOwnerCity(req.getOwnerCity());
-        e.setOwnerPincode(req.getOwnerPincode());
-
-        e.setPublisherAddress(req.getPublisherAddress());
-        e.setPublisherState(req.getPublisherState());
-        e.setPublisherDistrict(req.getPublisherDistrict());
-        e.setPublisherCity(req.getPublisherCity());
-        e.setPublisherPincode(req.getPublisherPincode());
-
-        e.setEditorName(req.getEditorName());
-        e.setEditorAddress(req.getEditorAddress());
-        e.setEditorState(req.getEditorState());
-        e.setEditorDistrict(req.getEditorDistrict());
-        e.setEditorCity(req.getEditorCity());
-        e.setEditorPincode(req.getEditorPincode());
-
-        e.setPublicationAddress(req.getPublicationAddress());
-        e.setPublicationState(req.getPublicationState());
-        e.setPublicationDistrict(req.getPublicationDistrict());
-        e.setPublicationCity(req.getPublicationCity());
-        e.setPublicationPincode(req.getPublicationPincode());
-
-        e.setPrinterName(req.getPrinterName());
-        e.setPressName(req.getPressName());
-        e.setPressAddress(req.getPressAddress());
-        e.setPressState(req.getPressState());
-        e.setPressDistrict(req.getPressDistrict());
-        e.setPressCity(req.getPressCity());
-        e.setPressPincode(req.getPressPincode());
+//        e.setOwnerAddress(req.getOwnerAddress());
+//        e.setOwnerState(req.getOwnerState());
+//        e.setOwnerDistrict(req.getOwnerDistrict());
+//        e.setOwnerCity(req.getOwnerCity());
+//        e.setOwnerPincode(req.getOwnerPincode());
+//
+//        e.setPublisherAddress(req.getPublisherAddress());
+//        e.setPublisherState(req.getPublisherState());
+//        e.setPublisherDistrict(req.getPublisherDistrict());
+//        e.setPublisherCity(req.getPublisherCity());
+//        e.setPublisherPincode(req.getPublisherPincode());
+//
+//        e.setEditorName(req.getEditorName());
+//        e.setEditorAddress(req.getEditorAddress());
+//        e.setEditorState(req.getEditorState());
+//        e.setEditorDistrict(req.getEditorDistrict());
+//        e.setEditorCity(req.getEditorCity());
+//        e.setEditorPincode(req.getEditorPincode());
+//
+//        e.setPublicationAddress(req.getPublicationAddress());
+//        e.setPublicationState(req.getPublicationState());
+//        e.setPublicationDistrict(req.getPublicationDistrict());
+//        e.setPublicationCity(req.getPublicationCity());
+//        e.setPublicationPincode(req.getPublicationPincode());
+//
+//        e.setPrinterName(req.getPrinterName());
+//        e.setPressName(req.getPressName());
+//        e.setPressAddress(req.getPressAddress());
+//        e.setPressState(req.getPressState());
+//        e.setPressDistrict(req.getPressDistrict());
+//        e.setPressCity(req.getPressCity());
+//        e.setPressPincode(req.getPressPincode());
 
         e.setCourtName(req.getCourtName());
         e.setCaseNo(req.getCaseNo());
         e.setCaseDescription(req.getCaseDescription());
+
+        e.setSpecifyDetails(req.getSpecifyDetails());
+        e.setOtherType(req.getOtherType());
         e.setPeriodicity(parsePeriodicity(req.getPeriodicity()));
             if (req.getStatus() != null) {
                 try {
@@ -474,8 +535,11 @@ public class MandatoryFilingService {
         return stateRepository.getDistrictsByState(stateName);
     }
 
-    public List<FilingDTO.Response> searchByFileNo(String trim) {
-        return null;
+    public List<FilingDTO.Response> searchByFileNo(String v) {
+        return repo.findByFileNoContainingIgnoreCase(v)
+                .stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
     }
 
     // ── PRIVATE HELPERS ───────────────────────────────────
@@ -516,24 +580,6 @@ public class MandatoryFilingService {
         return n.endsWith(".pdf") || n.endsWith(".jpg")
                 || n.endsWith(".jpeg") || n.endsWith(".png")
                 || n.endsWith(".tiff") || n.endsWith(".tif");
-    }
-
-    public List<FilingDTO.Response> universalSearch(String keyword) {
-
-        List<FilingDTO.Response> results =
-                searchByDiaryNumber(keyword);
-
-        if (!results.isEmpty()) {
-            return results;
-        }
-
-        results = searchByRegNo(keyword);
-
-        if (!results.isEmpty()) {
-            return results;
-        }
-
-        return searchByTitleName(keyword);
     }
 
     public List<FilingDTO.Response> advancedSearch(FilingDTO.SearchRequest req) {
