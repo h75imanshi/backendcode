@@ -30,11 +30,11 @@ public class MandatoryFiling {
     private Long id;
 
     // ── Core Search Fields ────────────────────────────────
-    @NotBlank(message = "Diary number is mandatory")
+
     @Column(name = "diary_number", unique = true, length = 50)
     private String diaryNumber;
 
-    @NotBlank(message = "Title name is mandatory")
+
     @Column(name = "title_name", length = 255)
     private String titleName;
 
@@ -266,26 +266,26 @@ public class MandatoryFiling {
     private String otherType;
 
 //    // ── DAK Section ───────────────────────────────────────
-//    @Column(name = "dak_received_date", length = 50)
-//    private String dakReceivedDate;
-//
-//    @Column(name = "dak_diary_no", length = 100)
-//    private String dakDiaryNo;
-//
-//    @Column(name = "dak_state", length = 100)
-//    private String dakState;
-//
-//    @Column(name = "dak_district", length = 100)
-//    private String dakDistrict;
-//
-//    @Column(name = "dak_section", length = 100)
-//    private String dakSection;
-//
-//    @Column(name = "dak_processed", length = 255)
-//    private String dakProcessed;
-//
-//    @Column(name = "dak_forward_to", length = 255)
-//    private String dakForwardTo;
+    @Column(name = "dak_received_date", length = 50)
+    private String dakReceivedDate;
+
+    @Column(name = "dak_diary_no", length = 100)
+    private String dakDiaryNo;
+
+    @Column(name = "dak_state", length = 100)
+    private String dakState;
+
+    @Column(name = "dak_district", length = 100)
+    private String dakDistrict;
+
+    @Column(name = "dak_section", length = 100)
+    private String dakSection;
+
+    @Column(name = "dak_processed", length = 255)
+    private String dakProcessed;
+
+    @Column(name = "dak_forward_to", length = 255)
+    private String dakForwardTo;
 //    // ── REVISION ─────────────────────────────────────────
 //    @Column(name = "revision_title_name", length = 255)
 //    private String revisionTitleName;

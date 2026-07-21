@@ -101,6 +101,15 @@ public class MandatoryFilingService {
 //                .pressCity(e.getPressCity())
 //                .pressPincode(e.getPressPincode())
 
+                //dak
+                .dakReceivedDate(e.getDakReceivedDate())
+                .dakDiaryNo(e.getDakDiaryNo())
+                .dakState(e.getDakState())
+                .dakDistrict(e.getDakDistrict())
+                .dakSection(e.getDakSection())
+                .dakProcessed(e.getDakProcessed())
+                .dakForwardTo(e.getDakForwardTo())
+
                 .courtName(e.getCourtName())
                 .caseNo(e.getCaseNo())
                 .caseDescription(e.getCaseDescription())
@@ -289,13 +298,13 @@ public class MandatoryFilingService {
 
 
 //                // DAK SECTION
-//                .dakReceivedDate(req.getDakReceivedDate())
-//                .dakDiaryNo(req.getDakDiaryNo())
-//                .dakState(req.getDakState())
-//                .dakDistrict(req.getDakDistrict())
-//                .dakSection(req.getDakSection())
-//                .dakProcessed(req.getDakProcessed())
-//                .dakForwardTo(req.getDakForwardTo())
+                .dakReceivedDate(req.getDakReceivedDate())
+                .dakDiaryNo(req.getDakDiaryNo())
+                .dakState(req.getDakState())
+                .dakDistrict(req.getDakDistrict())
+                .dakSection(req.getDakSection())
+                .dakProcessed(req.getDakProcessed())
+                .dakForwardTo(req.getDakForwardTo())
 
                 .build();
 
@@ -356,6 +365,14 @@ public class MandatoryFilingService {
 //        e.setPressDistrict(req.getPressDistrict());
 //        e.setPressCity(req.getPressCity());
 //        e.setPressPincode(req.getPressPincode());
+
+        e.setDakReceivedDate(req.getDakReceivedDate());
+        e.setDakDiaryNo(req.getDakDiaryNo());
+        e.setDakState(req.getDakState());
+        e.setDakDistrict(req.getDakDistrict());
+        e.setDakSection(req.getDakSection());
+        e.setDakProcessed(req.getDakProcessed());
+        e.setDakForwardTo(req.getDakForwardTo());
 
         e.setCourtName(req.getCourtName());
         e.setCaseNo(req.getCaseNo());

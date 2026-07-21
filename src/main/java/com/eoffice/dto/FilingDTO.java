@@ -72,13 +72,13 @@ public class FilingDTO {
 
 
 //        // DAK SECTION
-//        private String dakReceivedDate;
-//        private String dakDiaryNo;
-//        private String dakState;
-//        private String dakDistrict;
-//        private String dakSection;
-//        private String dakProcessed;
-//        private String dakForwardTo;
+        private String dakReceivedDate;
+        private String dakDiaryNo;
+        private String dakState;
+        private String dakDistrict;
+        private String dakSection;
+        private String dakProcessed;
+        private String dakForwardTo;
 //
 //        // REVISION
 //        private String revisionTitleName;
@@ -177,16 +177,16 @@ public class FilingDTO {
 //        private String pressCity;
 //        private String pressPincode;
 
-//        // DAK SECTION
-//        private String dakReceivedDate;
-//        private String dakDiaryNo;
-//        private String dakState;
-//        private String dakDistrict;
-//        private String dakSection;
-//        private String dakProcessed;
-//        private String dakForwardTo;
-//
-//        // REVISION
+        // DAK SECTION
+        private String dakReceivedDate;
+        private String dakDiaryNo;
+        private String dakState;
+        private String dakDistrict;
+        private String dakSection;
+        private String dakProcessed;
+        private String dakForwardTo;
+
+        // REVISION
 //        private String revisionTitleName;
 //        private String revisionRegNo;
 //        private String revisionReason;

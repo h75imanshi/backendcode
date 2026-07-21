@@ -215,6 +215,20 @@ public class MandatoryFilingController {
 
             @RequestParam(required = false) String specifyDetails,
             @RequestParam(required = false) String otherType,
+            @RequestParam(required = false) String dakReceivedDate,
+
+            @RequestParam(required = false) String dakDiaryNo,
+
+            @RequestParam(required = false) String dakState,
+
+            @RequestParam(required = false) String dakDistrict,
+
+            @RequestParam(required = false) String dakSection,
+
+            @RequestParam(required = false) String dakProcessed,
+
+            @RequestParam(required = false) String dakForwardTo,
+
 
 
             @RequestParam(value = "caseDocument", required = false)
@@ -280,6 +294,13 @@ public class MandatoryFilingController {
 //                            .fileNo(filingDate)
                             .sectionName(sectionName)
                             .subject(subject)
+                            .dakReceivedDate(dakReceivedDate)
+                            .dakDiaryNo(dakDiaryNo)
+                            .dakState(dakState)
+                            .dakDistrict(dakDistrict)
+                            .dakSection(dakSection)
+                            .dakProcessed(dakProcessed)
+                            .dakForwardTo(dakForwardTo)
 
 
 
